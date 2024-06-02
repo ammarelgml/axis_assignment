@@ -1,4 +1,4 @@
-import 'package:axis_assignment/ui/modules/landing/landing_page.dart';
+import 'package:axis_assignment/ui/modules/people/index/people_page.dart';
 import 'package:axis_assignment/utils/router/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -7,11 +7,11 @@ class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     debugPrint('Route to: ${settings.name}');
     switch (settings.name) {
-      /// Landing Pages
-      case RouteNames.rLandingPage:
+      /// People Pages
+      case RouteNames.rPeoplePage:
         return MaterialPageRoute(
-          settings: const RouteSettings(name: RouteNames.rLandingPage),
-          builder: (_) => const LandingPage(),
+          settings: const RouteSettings(name: RouteNames.rPeoplePage),
+          builder: (_) => const PeoplePage(),
         );
 
       default:

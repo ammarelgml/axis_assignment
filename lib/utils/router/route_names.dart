@@ -1,4 +1,5 @@
 class RouteNames {
-  /// Landing Pages
-  static const String rLandingPage = "/";
+  /// People Pages
+  static const String rPeoplePage = "/";
+  static const String rPeopleDetailsPage = "/rPeopleDetailsPage";
 }

@@ -9,7 +9,8 @@ class Root extends StatefulWidget {
   const Root({super.key});
 
   static final navigatorKey = GlobalKey<NavigatorState>();
-  static Locale locale = const Locale('en_US');
+
+  static Locale locale = const Locale('en');
 
   // Build Number
   static String versionNumber = '';
@@ -22,32 +23,25 @@ class Root extends StatefulWidget {
 class _RootState extends State<Root> {
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        return MaterialApp(
-          navigatorKey: Root.navigatorKey,
-          title: Constants.appName,
-          debugShowCheckedModeBanner: false,
+    return MaterialApp(
+      navigatorKey: Root.navigatorKey,
+      title: Constants.appName,
+      debugShowCheckedModeBanner: false,
 
-          /// Localization Stuff
-          localizationsDelegates: const [
-            GlobalWidgetsLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-            S.delegate,
-          ],
-          supportedLocales: S.supportedLocales,
-          locale: Root.locale,
+      /// Localization Stuff
+      localizationsDelegates: const [
+        GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        S.delegate,
+      ],
+      supportedLocales: S.supportedLocales,
+      locale: Root.locale,
 
-          /// Theme Stuff
-          // themeMode: state.themeMode,
-          // theme: AppTheme.lightTheme,
-          // darkTheme: AppTheme.darkTheme,
+      /// Theme Stuff
 
-          /// Routing Stuff
-          onGenerateRoute: RouteGenerator.generateRoute,
-        );
-      },
+      /// Routing Stuff
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }
