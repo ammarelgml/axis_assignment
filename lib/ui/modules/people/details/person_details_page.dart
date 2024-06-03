@@ -1,13 +1,15 @@
-import 'package:axis_assignment/bloc/people/images/bloc.dart';
+import 'package:axis_assignment/bloc/people/images/index/bloc.dart';
 import 'package:axis_assignment/data/models/person.dart';
 import 'package:axis_assignment/data/repositories/people_repo.dart';
 import 'package:axis_assignment/ui/common/custom_cached_image.dart';
 import 'package:axis_assignment/ui/common/loading_widget.dart';
 import 'package:axis_assignment/utils/constants.dart';
 import 'package:axis_assignment/utils/dimensions_utils.dart';
+import 'package:axis_assignment/utils/router/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:photo_view/photo_view.dart';
 
 class PersonDetailsPage extends StatefulWidget {
   const PersonDetailsPage({super.key, required this.people});
@@ -43,9 +45,9 @@ class _PersonDetailsPageState extends State<PersonDetailsPage> {
               /// Name & Job
               SliverAppBar(
                 elevation: 4,
-                expandedHeight: screenAwareHeight(100, context),
-                collapsedHeight: screenAwareHeight(100, context),
-                toolbarHeight: screenAwareHeight(100, context),
+                expandedHeight: screenAwareHeight(180, context),
+                collapsedHeight: screenAwareHeight(180, context),
+                toolbarHeight: screenAwareHeight(180, context),
                 floating: false,
                 pinned: true,
                 snap: false,
@@ -175,11 +177,16 @@ class _PersonDetailsPageState extends State<PersonDetailsPage> {
                                   physics: const NeverScrollableScrollPhysics(),
                                   children: state.imagesList
                                       .map(
-                                        (image) => CustomCachedImage(
-                                          image: image.filePath.isNotEmpty
-                                              ? '${Constants.imagesBaseUrl}/${image.filePath}'
-                                              : '',
-                                          cornerRadius: 10,
+                                        (image) => GestureDetector(
+                                          onTap: () {
+                                            Navigator.of(context).pushNamed(RouteNames.rImagePreviewPage, arguments: image);
+                                          },
+                                          child: CustomCachedImage(
+                                            image: image.filePath.isNotEmpty
+                                                ? '${Constants.imagesBaseUrl}/${image.filePath}'
+                                                : '',
+                                            cornerRadius: 10,
+                                          ),
                                         ),
                                       )
                                       .toList(),

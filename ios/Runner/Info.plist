@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>App needs an access to the local storage to save the photo in the gallery</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -14,6 +16,8 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>axis_assignment</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>App needs an access to the local storage to save the photo in the galery</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

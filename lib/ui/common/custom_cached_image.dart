@@ -47,6 +47,7 @@ class CustomCachedImage extends StatelessWidget {
         ),
         child: Center(child: LoadingWidget(color: Colors.white, size: height)),
       ),
+
       errorWidget: (context, url, error) => Container(
         width: width,
         height: height,
