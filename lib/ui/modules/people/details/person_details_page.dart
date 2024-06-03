@@ -181,11 +181,14 @@ class _PersonDetailsPageState extends State<PersonDetailsPage> {
                                           onTap: () {
                                             Navigator.of(context).pushNamed(RouteNames.rImagePreviewPage, arguments: image);
                                           },
-                                          child: CustomCachedImage(
-                                            image: image.filePath.isNotEmpty
-                                                ? '${Constants.imagesBaseUrl}/${image.filePath}'
-                                                : '',
-                                            cornerRadius: 10,
+                                          child: Hero(
+                                            tag:  image.filePath,
+                                            child: CustomCachedImage(
+                                              image: image.filePath.isNotEmpty
+                                                  ? '${Constants.imagesBaseUrl}/${image.filePath}'
+                                                  : '',
+                                              cornerRadius: 10,
+                                            ),
                                           ),
                                         ),
                                       )

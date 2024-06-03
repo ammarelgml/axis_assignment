@@ -29,9 +29,12 @@ class PeopleCard extends StatelessWidget {
           children: [
             /// Image
             Positioned.fill(
-              child: CustomCachedImage(
-                image: people.profilePath.isNotEmpty ? '${Constants.imagesBaseUrl}/${people.profilePath}' : '',
-                cornerRadius: 10,
+              child: Hero(
+                tag:  people.profilePath,
+                child: CustomCachedImage(
+                  image: people.profilePath.isNotEmpty ? '${Constants.imagesBaseUrl}/${people.profilePath}' : '',
+                  cornerRadius: 10,
+                ),
               ),
             ),
 

@@ -68,6 +68,7 @@ class _ImagePreviewPageState extends State<ImagePreviewPage> {
                 initialScale: PhotoViewComputedScale.contained,
                 minScale: 0.5,
                 maxScale: 1.0,
+                heroAttributes: PhotoViewHeroAttributes(tag: widget.image.filePath),
               );
             },
             itemCount: 1,
