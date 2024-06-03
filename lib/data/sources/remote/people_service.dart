@@ -9,4 +9,9 @@ class PeopleService {
     _apiHandler.setUrl('/person/popular?api_key=${Constants.apiKey}&page=$page');
     return await _apiHandler.get();
   }
+
+  Future<dynamic> getPersonImages(int personId) async {
+    _apiHandler.setUrl('/person/$personId/images?api_key=${Constants.apiKey}');
+    return await _apiHandler.get();
+  }
 }

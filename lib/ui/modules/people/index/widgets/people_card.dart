@@ -16,7 +16,7 @@ class PeopleCard extends StatelessWidget {
     double defWidth = isHorizontal ? screenAwareWidth(130, context) : MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () async {
-        await Navigator.of(context).pushNamed(RouteNames.rPeopleDetailsPage, arguments: [people.id, people]);
+        await Navigator.of(context).pushNamed(RouteNames.rPeopleDetailsPage, arguments: people);
       },
       child: Container(
         width: defWidth,

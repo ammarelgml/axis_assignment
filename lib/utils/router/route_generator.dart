@@ -1,3 +1,5 @@
+import 'package:axis_assignment/data/models/person.dart';
+import 'package:axis_assignment/ui/modules/people/details/person_details_page.dart';
 import 'package:axis_assignment/ui/modules/people/index/people_page.dart';
 import 'package:axis_assignment/utils/router/route_names.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,12 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: const RouteSettings(name: RouteNames.rPeoplePage),
           builder: (_) => const PeoplePage(),
+        );
+
+      case RouteNames.rPeopleDetailsPage:
+        return MaterialPageRoute(
+          settings: const RouteSettings(name: RouteNames.rPeopleDetailsPage),
+          builder: (_) => PersonDetailsPage(people: settings.arguments as People),
         );
 
       default:

@@ -6,5 +6,9 @@
   "errorMessage": "Error Occurred, try again later!",
   "noInternetConnection": "No Internet Connection!",
   "tryAgain": "Try Again",
-  "noActorsAvailable": "No actors available yet!"
+  "noActorsAvailable": "No actors available yet!",
+  "people": "People",
+  "images": "Images",
+  "department": "Department",
+  "popularity": "Popularity"
 }
