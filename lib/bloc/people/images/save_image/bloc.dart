@@ -7,7 +7,6 @@ import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 part 'event.dart';
-
 part 'state.dart';
 
 class SaveImageBloc extends Bloc<SaveImageEvent, SaveImageState> {
@@ -23,7 +22,7 @@ class SaveImageBloc extends Bloc<SaveImageEvent, SaveImageState> {
       final android = await plugin.androidInfo;
       storageStatus = android.version.sdkInt < 33 ? await Permission.storage.request() : PermissionStatus.granted;
     } else if (Platform.isIOS) {
-      storageStatus =  await Permission.storage.request();
+      storageStatus = await Permission.storage.request();
     }
 
     if (storageStatus == PermissionStatus.permanentlyDenied) {

@@ -4,7 +4,7 @@ class People {
   final int id;
   final String name;
   final String knownForDepartment;
-   String profilePath;
+  String profilePath;
   final double popularity;
 
   People({

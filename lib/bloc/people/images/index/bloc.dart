@@ -3,7 +3,6 @@ import 'package:axis_assignment/data/repositories/people_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'event.dart';
-
 part 'state.dart';
 
 class ImagesBloc extends Bloc<ImagesEvent, ImagesState> {

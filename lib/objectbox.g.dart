@@ -9,8 +9,7 @@
 import 'dart:typed_data';
 
 import 'package:flat_buffers/flat_buffers.dart' as fb;
-import 'package:objectbox/internal.dart'
-    as obx_int; // generated code can access "internal" functionality
+import 'package:objectbox/internal.dart' as obx_int; // generated code can access "internal" functionality
 import 'package:objectbox/objectbox.dart' as obx;
 
 import 'data/sources/local/cache/people/people_entity.dart';
@@ -24,31 +23,12 @@ final _entities = <obx_int.ModelEntity>[
       lastPropertyId: const obx_int.IdUid(5, 7620304775508573054),
       flags: 0,
       properties: <obx_int.ModelProperty>[
+        obx_int.ModelProperty(id: const obx_int.IdUid(1, 670107087303647654), name: 'id', type: 6, flags: 129),
+        obx_int.ModelProperty(id: const obx_int.IdUid(2, 2592433790844304129), name: 'name', type: 9, flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(1, 670107087303647654),
-            name: 'id',
-            type: 6,
-            flags: 129),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(2, 2592433790844304129),
-            name: 'name',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(3, 370570892646350434),
-            name: 'knownForDepartment',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(4, 8763934881095654991),
-            name: 'profilePath',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(5, 7620304775508573054),
-            name: 'popularity',
-            type: 8,
-            flags: 0)
+            id: const obx_int.IdUid(3, 370570892646350434), name: 'knownForDepartment', type: 9, flags: 0),
+        obx_int.ModelProperty(id: const obx_int.IdUid(4, 8763934881095654991), name: 'profilePath', type: 9, flags: 0),
+        obx_int.ModelProperty(id: const obx_int.IdUid(5, 7620304775508573054), name: 'popularity', type: 8, flags: 0)
       ],
       relations: <obx_int.ModelRelation>[],
       backlinks: <obx_int.ModelBacklink>[])
@@ -111,8 +91,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
         },
         objectToFB: (PeopleModelBox object, fb.Builder fbb) {
           final nameOffset = fbb.writeString(object.name);
-          final knownForDepartmentOffset =
-              fbb.writeString(object.knownForDepartment);
+          final knownForDepartmentOffset = fbb.writeString(object.knownForDepartment);
           final profilePathOffset = fbb.writeString(object.profilePath);
           fbb.startTable(6);
           fbb.addInt64(0, object.id);
@@ -126,18 +105,12 @@ obx_int.ModelDefinition getObjectBoxModel() {
         objectFromFB: (obx.Store store, ByteData fbData) {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
-          final idParam =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
-          final nameParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 6, '');
+          final idParam = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+          final nameParam = const fb.StringReader(asciiOptimization: true).vTableGet(buffer, rootOffset, 6, '');
           final knownForDepartmentParam =
-              const fb.StringReader(asciiOptimization: true)
-                  .vTableGet(buffer, rootOffset, 8, '');
-          final profilePathParam =
-              const fb.StringReader(asciiOptimization: true)
-                  .vTableGet(buffer, rootOffset, 10, '');
-          final popularityParam =
-              const fb.Float64Reader().vTableGet(buffer, rootOffset, 12, 0);
+              const fb.StringReader(asciiOptimization: true).vTableGet(buffer, rootOffset, 8, '');
+          final profilePathParam = const fb.StringReader(asciiOptimization: true).vTableGet(buffer, rootOffset, 10, '');
+          final popularityParam = const fb.Float64Reader().vTableGet(buffer, rootOffset, 12, 0);
           final object = PeopleModelBox(
               id: idParam,
               name: nameParam,
@@ -155,22 +128,17 @@ obx_int.ModelDefinition getObjectBoxModel() {
 /// [PeopleModelBox] entity fields to define ObjectBox queries.
 class PeopleModelBox_ {
   /// See [PeopleModelBox.id].
-  static final id =
-      obx.QueryIntegerProperty<PeopleModelBox>(_entities[0].properties[0]);
+  static final id = obx.QueryIntegerProperty<PeopleModelBox>(_entities[0].properties[0]);
 
   /// See [PeopleModelBox.name].
-  static final name =
-      obx.QueryStringProperty<PeopleModelBox>(_entities[0].properties[1]);
+  static final name = obx.QueryStringProperty<PeopleModelBox>(_entities[0].properties[1]);
 
   /// See [PeopleModelBox.knownForDepartment].
-  static final knownForDepartment =
-      obx.QueryStringProperty<PeopleModelBox>(_entities[0].properties[2]);
+  static final knownForDepartment = obx.QueryStringProperty<PeopleModelBox>(_entities[0].properties[2]);
 
   /// See [PeopleModelBox.profilePath].
-  static final profilePath =
-      obx.QueryStringProperty<PeopleModelBox>(_entities[0].properties[3]);
+  static final profilePath = obx.QueryStringProperty<PeopleModelBox>(_entities[0].properties[3]);
 
   /// See [PeopleModelBox.popularity].
-  static final popularity =
-      obx.QueryDoubleProperty<PeopleModelBox>(_entities[0].properties[4]);
+  static final popularity = obx.QueryDoubleProperty<PeopleModelBox>(_entities[0].properties[4]);
 }

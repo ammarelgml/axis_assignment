@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 part 'event.dart';
-
 part 'state.dart';
 
 class PeopleBloc extends Bloc<PeopleEvent, PeopleState> {
