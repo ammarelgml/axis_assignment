@@ -15,7 +15,6 @@ directors, etc.), their details, and images. Users can also save images locally.
 ## Bonus Features I added
 
 - Offline data storage, Save and display the list of people from a local database when offline
-- Integration of localization for multiple languages
 - Simple animations and UI enhancements
 - Pan and zoom functionality in image preview
 - Localization setup
