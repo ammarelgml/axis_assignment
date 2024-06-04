@@ -3,37 +3,41 @@ import 'package:axis_assignment/ui/common/custom_cached_image.dart';
 import 'package:axis_assignment/utils/constants.dart';
 import 'package:axis_assignment/utils/dimensions_utils.dart';
 import 'package:axis_assignment/utils/router/route_names.dart';
+import 'package:axis_assignment/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PeopleCard extends StatelessWidget {
   final People people;
-  final bool isHorizontal;
 
-  const PeopleCard({super.key, required this.people, this.isHorizontal = false});
+  const PeopleCard({super.key, required this.people});
 
   @override
   Widget build(BuildContext context) {
-    double defWidth = isHorizontal ? screenAwareWidth(130, context) : MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () async {
-        await Navigator.of(context).pushNamed(RouteNames.rPeopleDetailsPage, arguments: people);
+        if (await Utils.networkIsConnective()) {
+          if (!context.mounted) return;
+          await Navigator.of(context).pushNamed(RouteNames.rPeopleDetailsPage, arguments: people);
+        } else {
+          if (!context.mounted) return;
+          Utils.showToast(message: S.of(context)!.noInternetConnection);
+        }
       },
       child: Container(
-        width: defWidth,
         clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.onSecondary,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Stack(
           children: [
             /// Image
             Positioned.fill(
               child: Hero(
-                tag:  people.profilePath,
+                tag: people.profilePath,
                 child: CustomCachedImage(
                   image: people.profilePath.isNotEmpty ? '${Constants.imagesBaseUrl}/${people.profilePath}' : '',
-                  cornerRadius: 10,
                 ),
               ),
             ),

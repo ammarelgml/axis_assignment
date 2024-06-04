@@ -10,7 +10,7 @@ class CustomCachedImage extends StatelessWidget {
     this.height = 60,
     this.width = 75,
     this.hasOverlay = false,
-    this.cornerRadius = 10,
+    this.cornerRadius = 12,
     super.key,
   });
 
@@ -47,21 +47,21 @@ class CustomCachedImage extends StatelessWidget {
         ),
         child: Center(child: LoadingWidget(color: Colors.white, size: height)),
       ),
+      errorWidget: (context, url, error) => _errorWidget(context),
+    );
+  }
 
-      errorWidget: (context, url, error) => Container(
-        width: width,
-        height: height,
-        padding: const EdgeInsets.all(4),
-        clipBehavior: Clip.hardEdge,
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.tertiary,
-          borderRadius: BorderRadius.circular(cornerRadius),
-        ),
-        child: SvgPicture.asset(
-          'assets/icons/image.svg',
-          fit: BoxFit.contain,
-          color: Theme.of(context).colorScheme.onTertiary,
-        ),
+  Widget _errorWidget(BuildContext context) {
+    return Container(
+      clipBehavior: Clip.hardEdge,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.tertiary,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: SvgPicture.asset(
+        'assets/icons/image.svg',
+        fit: BoxFit.contain,
+        color: Theme.of(context).colorScheme.onTertiary,
       ),
     );
   }

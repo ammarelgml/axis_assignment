@@ -30,45 +30,46 @@ class _PeoplePageState extends State<PeoplePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(S.of(context)!.people)),
-      body: PagedGridView<int, People>(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 8,
-          mainAxisSpacing: 8,
-          childAspectRatio: 0.8,
-        ),
-        padding: const EdgeInsetsDirectional.only(top: 8, start: 16, end: 16, bottom: 32),
-        physics: const BouncingScrollPhysics(),
-        cacheExtent: 1.0,
-        pagingController: _peopleBloc.pagingController,
-        builderDelegate: PagedChildBuilderDelegate<People>(
-          itemBuilder: (context, item, index) => PeopleCard(people: item, isHorizontal: false),
-          firstPageProgressIndicatorBuilder: (_) {
-            return SizedBox(
-              height: screenAwareHeight(200, context),
-              child: const Center(child: LoadingWidget()),
-            );
-          },
-          firstPageErrorIndicatorBuilder: (_) {
-            return Center(
+      body: RefreshIndicator(
+        onRefresh: () async => _peopleBloc.refreshPeople(),
+        child: PagedGridView<int, People>(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+            childAspectRatio: 0.8,
+          ),
+          padding: const EdgeInsetsDirectional.only(top: 8, start: 16, end: 16, bottom: 32),
+          physics: const BouncingScrollPhysics(),
+          cacheExtent: 1.0,
+          pagingController: _peopleBloc.pagingController,
+          builderDelegate: PagedChildBuilderDelegate<People>(
+            itemBuilder: (context, item, index) => PeopleCard(people: item),
+            firstPageProgressIndicatorBuilder: (_) {
+              return SizedBox(
+                height: screenAwareHeight(200, context),
+                child: const Center(child: LoadingWidget()),
+              );
+            },
+            firstPageErrorIndicatorBuilder: (_) {
+              return Center(
+                child: GenericState(
+                  size: 40,
+                  fontSize: 16,
+                  removeButton: false,
+                  onPress: () => _peopleBloc.refreshPeople(),
+                  buttonKey: S.of(context)!.tryAgain,
+                  bodyKey: '${_peopleBloc.pagingController.error}',
+                ),
+              );
+            },
+            newPageProgressIndicatorBuilder: (_) => const LoadingWidget(),
+            newPageErrorIndicatorBuilder: (_) => const SizedBox(height: 16),
+            noItemsFoundIndicatorBuilder: (_) => Center(
               child: GenericState(
-                size: 40,
-                fontSize: 16,
-                removeButton: false,
-                onPress: () => _peopleBloc.refreshPeople(),
-                state: GenericStateTypes.ERROR,
-                buttonKey: S.of(context)!.tryAgain,
-                bodyKey: '${_peopleBloc.pagingController.error}',
+                removeButton: true,
+                titleKey: S.of(context)!.noPeopleInCacheConnectNetwork,
               ),
-            );
-          },
-          newPageProgressIndicatorBuilder: (_) => const LoadingWidget(),
-          newPageErrorIndicatorBuilder: (_) => const SizedBox(height: 16),
-          noItemsFoundIndicatorBuilder: (_) => Center(
-            child: GenericState(
-              removeButton: true,
-              state: GenericStateTypes.EMPTY,
-              titleKey: S.of(context)!.noActorsAvailable,
             ),
           ),
         ),

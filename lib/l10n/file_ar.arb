@@ -6,9 +6,10 @@
   "errorMessage": "Error Occurred, try again later!",
   "noInternetConnection": "No Internet Connection!",
   "tryAgain": "Try Again",
-  "noActorsAvailable": "No actors available yet!",
+  "noPeopleInCacheConnectNetwork": "No data in cache, connect to network and refresh!",
   "people": "People",
   "images": "Images",
   "department": "Department",
-  "popularity": "Popularity"
+  "popularity": "Popularity",
+  "savedToGallery": "Saved to gallery"
 }

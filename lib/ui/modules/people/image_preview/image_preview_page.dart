@@ -6,6 +6,7 @@ import 'package:axis_assignment/utils/utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
@@ -34,9 +35,9 @@ class _ImagePreviewPageState extends State<ImagePreviewPage> {
           BlocConsumer<SaveImageBloc, SaveImageState>(
             listener: (context, state) {
               if (state is ErrorSaveImageState) {
-                Utils.showToast(message: state.message, state: SnackBarStates.ERROR);
+                Utils.showToast(message: S.of(context)!.errorMessage, state: SnackBarStates.ERROR);
               } else if (state is SuccessSaveImageState) {
-                Utils.showToast(message: "Saved to gallery", state: SnackBarStates.SUCCESS);
+                Utils.showToast(message: S.of(context)!.savedToGallery, state: SnackBarStates.SUCCESS);
               }
             },
             builder: (context, state) {
